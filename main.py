@@ -131,11 +131,13 @@ while running:
     elif playerX >= 736:
         playerX = 736
     for i in range(num_of_enemies):
-        if enemyY[i] > 200:
-            for j in range(num_of_enemies):
-                enemyY[j] = 2000
-            game_over_text()
-            break
+        if enemyY[i] > 326:
+            if enemyX[i] == playerX:
+                for j in range(num_of_enemies):
+                    enemyY[j] = 2000
+                game_over_text()
+                break
+
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
             enemyX[i] = 0
