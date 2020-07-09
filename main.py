@@ -55,6 +55,13 @@ font = py.font.Font('freesansbold.ttf', 32)
 textX = 10
 textY = 10
 
+over_font = py.font.Font('freesansbold.ttf', 64)
+
+
+def game_over_text():
+    over_text = over_font.render("Game Over", True, (255, 255, 255))
+    screen.blit(over_text, (220, 250))
+
 
 def show_score(x, y):
     score = font.render("Score: " + str(score_value), True, (255, 255, 255))
@@ -124,6 +131,11 @@ while running:
     elif playerX >= 736:
         playerX = 736
     for i in range(num_of_enemies):
+        if enemyY[i] > 200:
+            for j in range(num_of_enemies):
+                enemyY[j] = 2000
+            game_over_text()
+            break
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
             enemyX[i] = 0
